@@ -23,6 +23,8 @@ pip install -r requirements.txt
 - Simple attack with API url.
 - Lookup IP.
 - Add, remove, update users.
+- Show server status ( core, total ram, used ram and cpu used )
+- Speedtest server uplink and downlink speed
 ```
 
 ## Usage
