@@ -182,7 +182,6 @@ def handle_message(msg):
             bot.sendMessage(chat_id, message)
 
         if text.startswith('/lookup'):
-            bot.sendMessage(chat_id, 'Using: /lookup [ip]')
             ip = msg['text'].split()[1]
             url = f'https://ipinfo.io/{ip}/json'
             response = requests.get(url)
@@ -227,6 +226,7 @@ def handle_message(msg):
                 bot.sendMessage(chat_id, 'User {} is not in the access list.'.format(target_user_id))
         elif text == '/userlist':
             handle_userlist_command(chat_id)
+            
         else:
             bot.sendMessage(chat_id, 'Using /help for show all commands')
 
