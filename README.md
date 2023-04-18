@@ -13,16 +13,16 @@ pip install -r requirements.txt
 ## Features
 
 ```ruby
-- Discord webhook with custom embed
-- Attack slots
-- Running attacks
-- Expiry date
-- Max duration attack
-- Admin user and normal user
-- You must have a plan to use bot
-- Simple attack with API url
-- Lookup IP
-- Add, remove, update users
+- Discord webhook with custom embed.
+- Attack slots.
+- Running attacks.
+- Expiry date.
+- Max duration attack.
+- Admin user and normal user.
+- You must have a plan to use bot.
+- Simple attack with API url.
+- Lookup IP.
+- Add, remove, update users.
 ```
 
 ## Usage
