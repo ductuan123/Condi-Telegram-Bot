@@ -10,6 +10,21 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 pip install -r requirements.txt
 ```
 
+## Features
+
+```ruby
+- Discord webhook with custom embed
+- Attack slots
+- Running attacks
+- Expiry date
+- Max duration attack
+- Admin user and normal user
+- You must have a plan to use bot
+- Simple attack with API url
+- Lookup IP
+- Add, remove, update users
+```
+
 ## Usage
 
 ```python
