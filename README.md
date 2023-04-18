@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-```python
+```bash
 python3 main.py
 or
 screen python3 main.py ( for 24/24 running lol )
