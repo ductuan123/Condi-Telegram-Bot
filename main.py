@@ -16,6 +16,7 @@ attack_slots = 2
 attack_slots_lock = threading.Lock()
 last_attack_time = None
 successful_attacks = []
+user_list = []
 
 def read_authorized_users():
     try:
@@ -76,6 +77,9 @@ def handle_message(msg):
 
     content_type, chat_type, chat_id = telepot.glance(msg)
     user_id = msg['from']['id']
+    
+    if user_id not in user_list:
+        user_list.append(user_id)
 
     if not last_attack_time:
         last_attack_time = None
@@ -85,14 +89,14 @@ def handle_message(msg):
         return
 
     if user_id not in admin_users:
-        if content_type == 'text' and (msg['text'].startswith('/adduser') or msg['text'].startswith('/removeuser') or msg['text'].startswith('/updateuser') or msg['text'].startswith('/userlist')):
+        if content_type == 'text' and (msg['text'].startswith('/adduser') or msg['text'].startswith('/removeuser') or msg['text'].startswith('/updateuser') or msg['text'].startswith('/userlist') or msg['text'].startswith('/notification')):
             bot.sendMessage(chat_id, 'Only admin can using commands.')
             return
 
     if content_type == 'text':
         text = msg['text']
         if text == '/help':
-            bot.sendMessage(chat_id, 'User commands:\n/methods - Show attack methods.\n/attack - Sent attack.\n/running - Show running attacks..\n/info - Show bot information.\n/serverstatus - Show bot server status.\n/lookup - Lookup IP Address.\n\nAdmin commands:\n/adduser - Add new user.\n/removeuser - Remove user.\n/updateuser - Update user information.\n/userlist - Show all users information.')
+            bot.sendMessage(chat_id, 'User commands:\n/methods - Show attack methods.\n/attack - Sent attack.\n/running - Show running attacks..\n/info - Show bot information.\n/serverstatus - Show bot server status.\n/lookup - Lookup IP Address.\n\nAdmin commands:\n/adduser - Add new user.\n/removeuser - Remove user.\n/updateuser - Update user information.\n/userlist - Show all users information.\n/notification - Send message to all users.')
         elif text == '/methods':
             bot.sendMessage(chat_id, 'List methods:\n- tls-destroy: I dont know lol\n- handshake: TCP handshake flood')
         elif text == '/info':
@@ -188,6 +192,12 @@ def handle_message(msg):
             data = response.json()
             message = f"IP: {ip}\nHostname: {data['hostname']}\nOrg: {data['org']}\nCountry: {data['country']}\nRegion: {data['region']}\nCity: {data['city']}\nTimezone: {data['timezone']}"
             bot.sendMessage(chat_id, message)
+            
+        if text.startswith('/notification'):
+            message = text.replace('/notification', '', 1).strip()
+            for user in user_list:
+                bot.sendMessage(user, 'Notification:\n{}'.format(message))
+            bot.sendMessage(chat_id, 'Notification send to all users.')
 
         elif text.startswith('/adduser'):
             args = text.split()[1:]
