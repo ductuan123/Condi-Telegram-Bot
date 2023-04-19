@@ -24,6 +24,7 @@ pip install -r requirements.txt
 - Lookup IP.
 - Add, remove, update users.
 - Show server status ( core, total ram, used ram and cpu used )
+- Notification to all users ( including those who do not have a plan but have started bot )
 ```
 
 ## Usage
