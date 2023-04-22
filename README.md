@@ -31,6 +31,7 @@ pip install -r requirements.txt
 
 ```ruby
 - Fixed expiry users (2023-04-22)
+- Added more admin users function (2023-04-22)
 ```
 
 ## Usage
