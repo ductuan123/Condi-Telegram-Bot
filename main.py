@@ -55,9 +55,9 @@ def is_user_authorized(user_id):
         return False
     return True
 
-def add_admin_user(user_id):
+def add_admin_user(*user_ids):
     global admin_users
-    admin_users.add(user_id)
+    admin_users.update(user_ids)
 
 def remove_admin_user(user_id):
     global admin_users
@@ -290,7 +290,7 @@ if __name__ == '__main__':
     bot = telepot.Bot(TOKEN)
     authorized_users = read_authorized_users()
     admin_users = set()
-    add_admin_user() # admin user id here
+    add_admin_user(123454543, 1231237123) # admin user id here
     MessageLoop(bot, handle_message).run_as_thread()
 
     print('Bot running...')
