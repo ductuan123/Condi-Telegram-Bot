@@ -29,16 +29,19 @@ def read_authorized_users():
                     expiry_date = datetime.datetime.strptime(expiry_date_str, '%Y-%m-%d')
                     max_duration = int(max_duration_str)
                     authorized_users[int(user_id)] = {'expiry_date': expiry_date, 'max_duration': max_duration}
-                return authorized_users
+            return authorized_users
     except FileNotFoundError:
         return {}
 
 def write_authorized_users(authorized_users):
-    with open('users.txt', 'w') as f:
-        for user_id, info in authorized_users.items():
-            expiry_date_str = info['expiry_date'].strftime('%Y-%m-%d')
-            max_duration_str = str(info['max_duration'])
-            f.write(f"{user_id}:{expiry_date_str}:{max_duration_str}\n")
+    try:
+        with open('users.txt', 'w') as f:
+            for user_id, info in authorized_users.items():
+                expiry_date_str = info['expiry_date'].strftime('%Y-%m-%d')
+                max_duration_str = str(info['max_duration'])
+                f.write(f"{user_id}:{expiry_date_str}:{max_duration_str}\n")
+    except Exception as e:
+        print(f"An error occurred while writing authorized users: {e}")
 
 def is_user_authorized(user_id):
     global authorized_users
@@ -270,6 +273,7 @@ def check_expired_users():
             del authorized_users[user_id]
             write_authorized_users(authorized_users)
             bot.sendMessage(user_id, 'Your plan has expired. Contact @zxcr9999 to renew.')
+            break  # chỉ xóa duy nhất một user có ngày hết hạn đã qua
     threading.Timer(86400, check_expired_users).start()
 
 def increase_attack_slots():
