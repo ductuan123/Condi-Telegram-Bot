@@ -27,6 +27,12 @@ pip install -r requirements.txt
 - Notification to all users ( including those who do not have a plan but have started bot )
 ```
 
+## Changelogs
+
+```ruby
+- Fixed expiry users (2023-04-22)
+```
+
 ## Usage
 
 ```bash
