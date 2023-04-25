@@ -10,7 +10,7 @@ import psutil
 from telepot.loop import MessageLoop
 
 webhook_url = '' # discord webhook here
-TOKEN = '' # your bot token here
+TOKEN = '6102051751:AAHkvJp58CK1xpiveTrQ1WwWYEOkTlYZQic' # your bot token here
 
 attack_slots = 2
 attack_slots_lock = threading.Lock()
