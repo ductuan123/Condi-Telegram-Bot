@@ -213,7 +213,7 @@ if __name__ == '__main__':
     bot = telepot.Bot(TOKEN)
     authorized_users = read_authorized_users()
     admin_users = set()
-    add_admin_user(123454543, 1231237123) # admin user id here
+    add_admin_user(5104230040, 5104230040) # admin user id here
     MessageLoop(bot, handle_message).run_as_thread()
 
     print('Bot running...')
